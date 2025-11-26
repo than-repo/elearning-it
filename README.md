@@ -43,21 +43,72 @@ fe-elearning
 ├─ package.json
 ├─ postcss.config.mjs
 ├─ public
-│  ├─ favicon.svg
 │  ├─ file.svg
 │  ├─ globe.svg
 │  ├─ models
 │  │  └─ graduation-cap.glb
+│  ├─ mylogo.svg
 │  ├─ next.svg
 │  ├─ noise.png
 │  ├─ vercel.svg
 │  └─ window.svg
 ├─ README.md
 ├─ src
-│  ├─ actions
 │  ├─ app
 │  │  ├─ (page)
-│  │  │  └─ About
+│  │  │  ├─ About
+│  │  │  │  └─ page.tsx
+│  │  │  └─ Hero
+│  │  ├─ favicon.ico
+│  │  ├─ globals.css
+│  │  ├─ layout.tsx
+│  │  └─ page.tsx
+│  ├─ components
+│  │  ├─ Footer
+│  │  │  └─ page.tsx
+│  │  ├─ Hero
+│  │  │  ├─ GraduationCap3D.tsx
+│  │  │  ├─ Hero.tsx
+│  │  │  └─ MagneticButton.tsx
+│  │  └─ Navbar
+│  │     └─ Navbar.tsx
+│  ├─ lib
+│  ├─ server
+│  │  └─ actions
+│  └─ types
+│     └─ global.d.ts
+├─ tailwind.config.ts
+└─ tsconfig.json
+
+```
+
+```
+fe-elearning
+├─ eslint.config.mjs
+├─ next.config.ts
+├─ package-lock.json
+├─ package.json
+├─ postcss.config.mjs
+├─ public
+│  ├─ file.svg
+│  ├─ globe.svg
+│  ├─ models
+│  │  └─ graduation-cap.glb
+│  ├─ mylogo.svg
+│  ├─ next.svg
+│  ├─ noise.png
+│  ├─ vercel.svg
+│  └─ window.svg
+├─ README.md
+├─ src
+│  ├─ app
+│  │  ├─ (page)
+│  │  │  ├─ About
+│  │  │  │  └─ page.tsx
+│  │  │  ├─ Hero
+│  │  │  ├─ Product
+│  │  │  │  └─ page.tsx
+│  │  │  └─ Test
 │  │  │     └─ page.tsx
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css
@@ -71,7 +122,20 @@ fe-elearning
 │  │  │  ├─ Hero.tsx
 │  │  │  └─ MagneticButton.tsx
 │  │  └─ Navbar
+│  │     ├─ DesktopCategories.tsx
+│  │     ├─ MobileDrawer.tsx
+│  │     ├─ NavbarClient.tsx
+│  │     ├─ NavRightActions.tsx
+│  │     ├─ SearchBar.tsx
+│  │     └─ ServerNavbar.tsx
+│  ├─ data
+│  │  └─ categories.ts
 │  ├─ lib
+│  │  ├─ api.ts
+│  │  └─ cn.ts
+│  ├─ server
+│  │  └─ actions
+│  │     └─ api.ts
 │  └─ types
 │     └─ global.d.ts
 ├─ tailwind.config.ts

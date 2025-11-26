@@ -13,14 +13,15 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[url('/noise.png')] mix-blend-soft-light" />
       </div>
 
-      <div className="relative z-20 flex min-h-screen items-center justify-start px-8 md:px-16 lg:px-24 xl:px-32">
-        <div className="max-w-4xl space-y-8">
-          {/* Big title - reveal từng chữ */}
+      <div className="relative z-20 flex min-h-screen flex-col items-center justify-center px-6 sm:px-8 md:px-16 lg:flex-row lg:items-center lg:justify-start lg:px-24 xl:px-32">
+        {/* Nội dung chữ - luôn hiện, responsive đẹp */}
+        <div className="relative z-10 max-w-4xl space-y-8 text-center lg:text-left">
+          {/* Title */}
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="text-4xl font-medium leading-tight text-white md:text-4xl lg:text-5xl xl:text-6xl"
+            className="text-5xl font-medium leading-tight text-white sm:text-6xl lg:text-5xl xl:text-6xl 2xl:text-7xl"
           >
             {"Learn Anything".split(" ").map((word, i) => (
               <span key={i} className="inline-block overflow-hidden">
@@ -30,7 +31,7 @@ export default function Hero() {
                   animate={{ y: 0 }}
                   transition={{
                     duration: 0.8,
-                    delay: 0.5 + i * 0.1,
+                    delay: 0.5 + i * 0.15,
                     ease: "easeOut",
                   }}
                 >
@@ -54,24 +55,24 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5, duration: 0.8 }}
-            className="max-w-2xl text-lg text-gray-400 md:text-xl"
+            className="mx-auto max-w-2xl text-lg text-gray-400 lg:mx-0 lg:text-xl"
           >
             The smartest way to master new skills. Interactive
             courses, real-time feedback, and learning paths built for
             the modern mind.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.8, duration: 0.8 }}
-            className="flex flex-wrap gap-4"
+            className="flex flex-col gap-4 sm:flex-row justify-center lg:justify-start"
           >
             <MagneticButton>
               <a
                 href="#"
-                className="rounded-full bg-white px-8 py-4 text-black font-medium transition-all hover:scale-105"
+                className="rounded-full bg-white px-10 py-4 text-black font-medium hover:scale-105 transition-all block text-center"
               >
                 Get Started
               </a>
@@ -80,7 +81,7 @@ export default function Hero() {
             <MagneticButton strength={30}>
               <a
                 href="#"
-                className="rounded-full border border-white/30 px-8 py-4 text-white backdrop-blur-sm transition-all hover:border-white/60"
+                className="rounded-full border border-white/30 px-10 py-4 text-white backdrop-blur-sm hover:border-white/60 transition-all block text-center"
               >
                 View Courses
               </a>
@@ -88,7 +89,13 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <GraduationCap3D />
+        {/* CHỈ HIỆN 3D MODEL TỪ LAPTOP TRỞ LÊN (≥1024px) */}
+        {/* Dùng hidden + lg:block → dưới lg sẽ KHÔNG mount component luôn → tiết kiệm 100% tài nguyên */}
+        <div className="hidden lg:block absolute inset-0 pointer-events-none">
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full max-w-xl xl:max-w-2xl 2xl:max-w-3xl">
+            <GraduationCap3D />
+          </div>
+        </div>
       </div>
     </section>
   );

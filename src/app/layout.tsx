@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import UdemyNavbar from "@/components/Navbar/Navbar";
+import UdemyNavbar from "@/components/Navbar/ServerNavbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,8 +25,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-gray-50">
-        <UdemyNavbar />
+      <body
+        className="min-h-screen bg-gray-50 "
+        suppressHydrationWarning
+      >
+        <div>
+          <UdemyNavbar />
+        </div>
         {children}
       </body>
     </html>
