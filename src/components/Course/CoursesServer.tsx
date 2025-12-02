@@ -2,7 +2,8 @@
 import { Metadata } from "next";
 import { getCourses } from "@/data/courses";
 import CoursesClient from "./CoursesClient";
-
+import type { Category } from "@/types/category";
+import { getCategories } from "@/data/categories";
 export const metadata: Metadata = {
   title: "Tất cả khóa học lập trình - Cybersoft Academy",
   description:
@@ -16,6 +17,6 @@ export const metadata: Metadata = {
 
 export default async function CoursesServer() {
   const courses = await getCourses(); // cache + transform + SEO ready
-
-  return <CoursesClient courses={courses} />;
+  const categories = await getCategories();
+  return <CoursesClient courses={courses} categories={categories} />;
 }

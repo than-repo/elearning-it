@@ -4,6 +4,8 @@ import { Metadata } from "next";
 import CoursesClient from "@/components/Course/CoursesClient";
 import CourseListSkeleton from "@/components/Course/CourseListSkeleton";
 import { getCourses } from "@/data/courses";
+import { getCategories } from "@/data/categories"; // MỚI: Import
+import type { Category } from "@/types/category"; // MỚI: Import type
 
 export const metadata: Metadata = {
   title: "Tất cả khóa học - Cybersoft Academy 2025",
@@ -39,5 +41,6 @@ export default function CoursesPage() {
 
 async function CoursesContent() {
   const courses = await getCourses();
-  return <CoursesClient courses={courses} />;
+  const categories = await getCategories(); // MỚI: Fetch categories (cache tự động)
+  return <CoursesClient courses={courses} categories={categories} />; // MỚI: Pass categories
 }
