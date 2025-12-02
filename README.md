@@ -45,6 +45,8 @@ fe-elearning
 ├─ public
 │  ├─ file.svg
 │  ├─ globe.svg
+│  ├─ img
+│  │  └─ fallback-course.png
 │  ├─ models
 │  │  └─ graduation-cap.glb
 │  ├─ mylogo.svg
@@ -58,56 +60,15 @@ fe-elearning
 │  │  ├─ (page)
 │  │  │  ├─ About
 │  │  │  │  └─ page.tsx
-│  │  │  └─ Hero
-│  │  ├─ favicon.ico
-│  │  ├─ globals.css
-│  │  ├─ layout.tsx
-│  │  └─ page.tsx
-│  ├─ components
-│  │  ├─ Footer
-│  │  │  └─ page.tsx
-│  │  ├─ Hero
-│  │  │  ├─ GraduationCap3D.tsx
-│  │  │  ├─ Hero.tsx
-│  │  │  └─ MagneticButton.tsx
-│  │  └─ Navbar
-│  │     └─ Navbar.tsx
-│  ├─ lib
-│  ├─ server
-│  │  └─ actions
-│  └─ types
-│     └─ global.d.ts
-├─ tailwind.config.ts
-└─ tsconfig.json
-
-```
-
-```
-fe-elearning
-├─ eslint.config.mjs
-├─ next.config.ts
-├─ package-lock.json
-├─ package.json
-├─ postcss.config.mjs
-├─ public
-│  ├─ file.svg
-│  ├─ globe.svg
-│  ├─ models
-│  │  └─ graduation-cap.glb
-│  ├─ mylogo.svg
-│  ├─ next.svg
-│  ├─ noise.png
-│  ├─ vercel.svg
-│  └─ window.svg
-├─ README.md
-├─ src
-│  ├─ app
-│  │  ├─ (page)
-│  │  │  ├─ About
-│  │  │  │  └─ page.tsx
+│  │  │  ├─ courses
+│  │  │  │  ├─ components
+│  │  │  │  ├─ error.tsx
+│  │  │  │  ├─ loading.tsx
+│  │  │  │  ├─ page.tsx
+│  │  │  │  └─ [id]
+│  │  │  │     ├─ loading.tsx
+│  │  │  │     └─ page.tsx
 │  │  │  ├─ Hero
-│  │  │  ├─ Product
-│  │  │  │  └─ page.tsx
 │  │  │  └─ Test
 │  │  │     └─ page.tsx
 │  │  ├─ favicon.ico
@@ -115,6 +76,15 @@ fe-elearning
 │  │  ├─ layout.tsx
 │  │  └─ page.tsx
 │  ├─ components
+│  │  ├─ Card
+│  │  │  └─ index.tsx
+│  │  ├─ Course
+│  │  │  ├─ Card.tsx
+│  │  │  ├─ CardSkeleton.tsx
+│  │  │  ├─ CourseHoverPreview.tsx
+│  │  │  ├─ CourseListSkeleton.tsx
+│  │  │  ├─ CoursesClient.tsx
+│  │  │  └─ CoursesServer.tsx
 │  │  ├─ Footer
 │  │  │  └─ page.tsx
 │  │  ├─ Hero
@@ -125,11 +95,12 @@ fe-elearning
 │  │     ├─ DesktopCategories.tsx
 │  │     ├─ MobileDrawer.tsx
 │  │     ├─ NavbarClient.tsx
+│  │     ├─ NavbarServer.tsx
 │  │     ├─ NavRightActions.tsx
-│  │     ├─ SearchBar.tsx
-│  │     └─ ServerNavbar.tsx
+│  │     └─ SearchBar.tsx
 │  ├─ data
-│  │  └─ categories.ts
+│  │  ├─ categories.ts
+│  │  └─ courses.ts
 │  ├─ lib
 │  │  ├─ api.ts
 │  │  └─ cn.ts
@@ -137,6 +108,8 @@ fe-elearning
 │  │  └─ actions
 │  │     └─ api.ts
 │  └─ types
+│     ├─ category.ts
+│     ├─ course.ts
 │     └─ global.d.ts
 ├─ tailwind.config.ts
 └─ tsconfig.json

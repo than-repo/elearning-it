@@ -1,3 +1,4 @@
+import CoursesServer from "@/components/Course/CoursesServer";
 import Hero from "@/components/Hero/Hero";
 
 export default function Home() {
@@ -5,7 +6,8 @@ export default function Home() {
     <>
       <Hero />
       {/* Phần còn lại của trang bạn sẽ thêm sau */}
-      <div className="h-[400vh]" /> {/* để test scroll */}
+
+      <CoursesServer />
     </>
   );
 }
