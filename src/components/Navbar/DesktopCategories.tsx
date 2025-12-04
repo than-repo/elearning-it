@@ -1,3 +1,4 @@
+//src\components\Navbar\DesktopCategories.tsx
 "use client";
 
 import { ChevronRight } from "lucide-react";

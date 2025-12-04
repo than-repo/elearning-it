@@ -114,7 +114,7 @@ export default async function CourseDetailPage({ params }: Props) {
           <div className="bg-white border rounded-xl p-6 shadow-sm">
             <h3 className="font-semibold text-lg mb-4">Giảng viên</h3>
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-2xl font-bold text-white shadow-md">
+              <div className="w-16 h-16 bg-linear-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-2xl font-bold text-white shadow-md">
                 {course.creator.fullName.charAt(0).toUpperCase()}
               </div>
               <div>
@@ -129,7 +129,7 @@ export default async function CourseDetailPage({ params }: Props) {
           </div>
 
           {/* Thông tin khóa học */}
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6">
+          <div className="bg-linear-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-6">
             <h3 className="font-semibold text-lg mb-4 text-blue-900">
               Thông tin khóa học
             </h3>

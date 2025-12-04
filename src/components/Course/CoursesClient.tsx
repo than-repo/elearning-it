@@ -14,11 +14,13 @@ import type { Category } from "@/types/category";
 interface Props {
   serializedCourses: string;
   serializedCategories: string;
+  defaultCategorySlug?: string;
 }
 
 export default function CoursesClient({
   serializedCourses,
   serializedCategories,
+  defaultCategorySlug,
 }: Props) {
   // Parse chỉ 1 lần duy nhất → React không tạo lại object mới mỗi render
   const courses = useMemo<Course[]>(
@@ -46,6 +48,12 @@ export default function CoursesClient({
     setPage,
   } = useFilter(courses, categories);
 
+  // Nếu là trang SEO → tự động chọn danh mục (không hiện filter cũng được, nhưng vẫn hoạt động)
+  React.useEffect(() => {
+    if (defaultCategorySlug && category === "") {
+      setCategory(defaultCategorySlug);
+    }
+  }, [defaultCategorySlug, category, setCategory]);
   return (
     <div className="space-y-8">
       {/* Bộ lọc */}

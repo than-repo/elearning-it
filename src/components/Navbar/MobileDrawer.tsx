@@ -6,22 +6,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { Category } from "@/types/category";
 
-const CATEGORIES = [
-  "Development",
-  "Business",
-  "Finance & Accounting",
-  "IT & Software",
-  "Office Productivity",
-  "Personal Development",
-  "Design",
-  "Marketing",
-  "Lifestyle",
-  "Photography & Video",
-  "Health & Fitness",
-  "Music",
-  "Teaching & Academics",
-];
-
 export default function MobileDrawer({
   categories,
 }: {
@@ -63,7 +47,7 @@ export default function MobileDrawer({
           />
         </div>
 
-        {/* Categories  */}
+        {/* Categories - Đã dùng props categories thay vì hardcode */}
         <div>
           <button
             onClick={() => setCategoriesOpen(!categoriesOpen)}
@@ -74,25 +58,22 @@ export default function MobileDrawer({
               Categories
             </span>
             <ChevronRight
-              className={`w-5 h-5 transition-transform ${
+              className={`w-5 h-5 transition-transform duration-200 ${
                 categoriesOpen ? "rotate-90" : ""
               }`}
             />
           </button>
 
-          {/* Dropdown list */}
+          {/* Dropdown list - dùng dữ liệu thật từ API */}
           {categoriesOpen && (
-            <div className="mt-2 space-y-1 border-l-4 border-purple-600">
-              {CATEGORIES.map((cat) => (
+            <div className="mt-4 space-y-1 border-l-4 border-purple-600">
+              {categories.map((cat) => (
                 <a
-                  key={cat}
-                  href={`/categories/${cat
-                    .toLowerCase()
-                    .replace(/ & /g, "-")
-                    .replace(/ /g, "-")}`}
-                  className="block py-3 pl-8 text-gray-700 font-medium hover:text-purple-600 transition"
+                  key={cat.id}
+                  href={`/courses?danhMuc=${cat.id}`}
+                  className="block py-3 pl-8 pr-4 text-gray-700 font-medium hover:text-purple-600 hover:bg-purple-50 rounded-r-lg transition-all duration-200"
                 >
-                  {cat}
+                  {cat.title}
                 </a>
               ))}
             </div>
@@ -114,10 +95,10 @@ export default function MobileDrawer({
 
         {/* Auth Buttons */}
         <div className="space-y-3 pt-4 border-t">
-          <button className="w-full py-4 text-lg font-bold border-2 border-black rounded-xl">
+          <button className="w-full py-4 text-lg font-bold border-2 border-black rounded-xl hover:bg-gray-50 transition">
             Log in
           </button>
-          <button className="w-full py-4 text-lg font-bold text-white bg-black rounded-xl">
+          <button className="w-full py-4 text-lg font-bold text-white bg-black rounded-xl hover:bg-gray-900 transition">
             Sign up
           </button>
         </div>

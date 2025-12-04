@@ -1,103 +1,52 @@
-// src/app/(page)/categories/[slug]/page.tsx
+// src/app/(seo)/categories/[slug]/page.tsx
+
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { api } from "@/lib/api";
+import { getCategories } from "@/data/categories";
+import CoursesServer from "@/components/Course/CoursesServer";
 
-// BẮT BUỘC: thêm dòng này để Next.js chấp nhận dynamic route khi dev
 export const dynamicParams = true;
+export const revalidate = 3600;
 
-// Tạo sẵn 6 trang (chỉ chạy lúc build, dev thì dynamicParams lo)
 export async function generateStaticParams() {
-  const cats = await api<any[]>("/QuanLyKhoaHoc/LayDanhMucKhoaHoc", {
-    server: true,
-  });
-
-  return cats.map((c) => ({
-    slug: c.tenDanhMuc
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/đ/g, "d")
-      .replace(/Đ/g, "d")
-      .replace(/[^a-z0-9-]+/g, "-")
-      .replace(/-+/g, "-")
-      .replace(/^-|-$/g, ""),
-  }));
+  const cats = await getCategories();
+  return cats.map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>; // ← Promise!
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const cats = await api<any[]>("/QuanLyKhoaHoc/LayDanhMucKhoaHoc", {
-    server: true,
-  });
-  const cat = cats.find((c: any) => {
-    const s = c.tenDanhMuc
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/đ/g, "d")
-      .replace(/Đ/g, "d")
-      .replace(/[^a-z0-9-]+/g, "-")
-      .replace(/-+/g, "-")
-      .replace(/^-|-$/g, "");
-    return s === slug;
-  });
+  const { slug } = await params; // ← PHẢI AWAIT
+  const cats = await getCategories();
+  const cat = cats.find((c) => c.slug === slug);
+
+  if (!cat) return { title: "Không tìm thấy danh mục" };
+
   return {
-    title: cat ? `Khóa học ${cat.tenDanhMuc}` : "Không tìm thấy",
+    title: `Khóa học ${cat.title} tốt nhất 2025 - Cybersoft Academy`,
+    description: `Top khóa học ${cat.title} thực chiến, dự án thật, có việc làm sau khóa học`,
+    openGraph: {
+      title: `Khóa học ${cat.title} chất lượng cao`,
+      description: `Học ${cat.title} từ A-Z • Cam kết việc làm • Hơn 50.000 học viên`,
+      images: ["/og-course.jpg"],
+    },
   };
 }
 
-export default async function Page({
+// SỬA CHÍNH TẠI ĐÂY
+export default async function CategorySeoPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>; // ← Promise!
 }) {
-  const { slug } = await params;
+  const { slug } = await params; // ← BẮT BUỘC AWAIT
 
-  const cats = await api<any[]>("/QuanLyKhoaHoc/LayDanhMucKhoaHoc", {
-    server: true,
-  });
-  const cat = cats.find((c: any) => {
-    const s = c.tenDanhMuc
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/đ/g, "d")
-      .replace(/Đ/g, "d")
-      .replace(/[^a-z0-9-]+/g, "-")
-      .replace(/-+/g, "-")
-      .replace(/^-|-$/g, "");
-    return s === slug;
-  });
+  const categories = await getCategories();
+  const category = categories.find((c) => c.slug === slug);
 
-  if (!cat) notFound();
+  if (!category) notFound();
 
-  const courses = await api<any[]>(
-    `/QuanLyKhoaHoc/LayKhoaHocTheoDanhMuc?maDanhMuc=${cat.maDanhMuc}&MaNhom=GP01`,
-    {
-      server: true,
-      next: { revalidate: 3600 },
-    }
-  );
-
-  return (
-    <div className="container mx-auto py-10">
-      <h1 className="text-4xl font-bold mb-8">{cat.tenDanhMuc}</h1>
-      {courses.length === 0 ? (
-        <p>Chưa có khóa học</p>
-      ) : (
-        <ul className="space-y-4">
-          {courses.map((c) => (
-            <li key={c.maKhoaHoc} className="border p-4">
-              {c.tenKhoaHoc}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
+  return <CoursesServer initialCategorySlug={slug} />;
 }
