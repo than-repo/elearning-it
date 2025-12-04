@@ -60,6 +60,9 @@ fe-elearning
 │  │  ├─ (page)
 │  │  │  ├─ About
 │  │  │  │  └─ page.tsx
+│  │  │  ├─ categories
+│  │  │  │  └─ [slug]
+│  │  │  │     └─ page.tsx
 │  │  │  ├─ courses
 │  │  │  │  ├─ components
 │  │  │  │  ├─ error.tsx
@@ -70,6 +73,10 @@ fe-elearning
 │  │  │  │     └─ page.tsx
 │  │  │  └─ Test
 │  │  │     └─ page.tsx
+│  │  ├─ api
+│  │  │  └─ categories
+│  │  │     └─ [slug]
+│  │  │        └─ route.ts
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css
 │  │  ├─ layout.tsx
