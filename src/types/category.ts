@@ -1,3 +1,4 @@
+src\types\category.ts
 export type RawCategory = {
   maDanhMuc: string;
   tenDanhMuc: string;

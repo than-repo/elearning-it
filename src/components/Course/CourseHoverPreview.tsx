@@ -100,12 +100,12 @@ export default function CourseHoverPreview({
                 className="object-cover"
                 unoptimized
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/30 to-transparent" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <PlayCircle className="w-20 h-20 text-white opacity-90 drop-shadow-2xl" />
               </div>
               <div className="absolute bottom-4 left-5">
-                <span className="px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-full text-sm shadow-lg">
+                <span className="px-4 py-2 bg-linear-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-full text-sm shadow-lg">
                   {course.category.name}
                 </span>
               </div>
@@ -156,7 +156,7 @@ export default function CourseHoverPreview({
 
               {/* Giảng viên */}
               <div className="flex items-center gap-4 mt-6 pt-6 border-t border-gray-100">
-                <div className="w-14 h-14 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-black text-xl shadow-xl">
+                <div className="w-14 h-14 bg-linear-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-black text-xl shadow-xl">
                   {course.creator.fullName.charAt(0).toUpperCase()}
                 </div>
                 <div>
@@ -173,7 +173,7 @@ export default function CourseHoverPreview({
               <div className="mt-7">
                 <Link
                   href={`/courses/${course.id}`}
-                  className="flex w-full items-center justify-center gap-2 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-2xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-xl text-lg"
+                  className="flex w-full items-center justify-center gap-2 py-4 bg-linear-to-r from-blue-600 to-indigo-600 text-white font-bold rounded-2xl hover:from-blue-700 hover:to-indigo-700 transition-all shadow-xl text-lg"
                 >
                   Xem chi tiết ngay
                   <ArrowRight className="w-6 h-6" />

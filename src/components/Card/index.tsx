@@ -17,7 +17,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
     >
       <article className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full flex flex-col">
         {/* Thumbnail */}
-        <div className="relative aspect-video bg-gradient-to-br from-blue-50 to-indigo-100">
+        <div className="relative aspect-video bg-linear-to-br from-blue-50 to-indigo-100">
           <Image
             src={course.thumbnail}
             alt={course.title}
@@ -32,7 +32,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
             }}
           />
           {/* Overlay + Badge */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           <div className="absolute top-4 left-4">
             <span className="px-3 py-1.5 bg-blue-600 text-white text-xs font-semibold rounded-full shadow-md">
               {course.category.name}
@@ -69,7 +69,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
 
           {/* Giảng viên */}
           <div className="mt-5 pt-5 border-t border-gray-100 flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md">
+            <div className="w-10 h-10 bg-linear-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md">
               {course.creator.fullName.charAt(0).toUpperCase()}
             </div>
             <div>

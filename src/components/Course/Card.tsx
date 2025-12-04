@@ -1,32 +1,46 @@
 // src/components/Course/Card.tsx
-import React from "react";
-import CourseHoverPreview from "./CourseHoverPreview";
+import React, { useState } from "react";
+import Link from "next/link";
 import { Course } from "@/types/course";
 import Image from "next/image";
 import { Calendar, Eye, Users } from "lucide-react";
 
 const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
+  const [imgSrc, setImgSrc] = useState(course.thumbnail);
   const cardContent = (
-    <article className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 h-full flex flex-col cursor-pointer">
-      {/* Nội dung card như cũ – nhưng KHÔNG có Link */}
-      <div className="relative aspect-video bg-gray-100">
+    <article className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 min-h-[450px] h-full flex flex-col cursor-pointer">
+      {/* Image: Fixed height */}
+      <div className="relative aspect-video bg-gray-100 shrink-0">
         <Image
-          src={course.thumbnail}
+          src={imgSrc}
           alt={course.title}
           fill
           className="object-cover"
           unoptimized
+          onError={() => setImgSrc("/img/fallback-course.png")} // Fallback khi lỗi
+          onLoadingComplete={(result) => {
+            if (result.naturalWidth === 0)
+              setImgSrc("/img/fallback-course.png"); // Backup cho broken image
+          }}
         />
       </div>
-      <div className="p-6 flex-1 flex flex-col">
-        <h3 className="text-xl font-bold text-gray-900 line-clamp-2">
-          {course.title}
-        </h3>
-        <p className="mt-3 text-sm text-gray-600 line-clamp-3 flex-1">
-          {course.description}
-        </p>
-        {/* Stats */}
-        <div className="grid grid-cols-3 gap-3 mt-5 text-sm">
+      {/* Content: Stretch full, justify-between để bottom align */}
+      <div className="p-6 flex-1 flex flex-col justify-between min-h-0">
+        {/* Text section: Clamp với ellipsis tự nhiên, height tự động để tránh đè */}
+        <div className="flex-1 space-y-3">
+          <div className="line-clamp-2 text-xl font-bold text-gray-900 leading-relaxed overflow-hidden">
+            {" "}
+            {/* Wrapper div cho title: clamp + hidden */}
+            {course.title}
+          </div>
+          <div className="line-clamp-3 text-sm text-gray-600 leading-relaxed overflow-hidden">
+            {" "}
+            {/* Wrapper div cho description: clamp + hidden */}
+            {course.description}
+          </div>
+        </div>
+        {/* Stats: Đẩy xuống bottom */}
+        <div className="mt-auto grid grid-cols-3 gap-3 text-sm">
           <div className="flex items-center gap-2 text-gray-600">
             <Eye className="w-4 h-4 text-blue-600" />
             <span>{course.views.toLocaleString()}</span>
@@ -40,14 +54,13 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
             <span className="text-xs">{course.createdAt}</span>
           </div>
         </div>
-
-        {/* Giảng viên */}
-        <div className="mt-5 pt-5 border-t border-gray-100 flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md">
+        {/* Giảng viên: Dưới stats */}
+        <div className="mt-4 pt-4 border-t border-gray-100 flex items-center gap-3">
+          <div className="w-10 h-10 bg-linear-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md shrink-0">
             {course.creator.fullName.charAt(0).toUpperCase()}
           </div>
-          <div>
-            <p className="text-sm font-semibold text-gray-900">
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-semibold text-gray-900 truncate">
               {course.creator.fullName}
             </p>
             <p className="text-xs text-gray-500">
@@ -55,8 +68,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
             </p>
           </div>
         </div>
-
-        {/* Mã khóa học (nhỏ nhỏ ở góc) */}
+        {/* Mã khóa học: Bottom-right */}
         <div className="mt-3 text-right">
           <code className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">
             {course.id}
@@ -66,10 +78,11 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
     </article>
   );
 
+  // Giữ Link cho navigation (thay route nếu cần), hoặc <div> nếu static
   return (
-    <CourseHoverPreview course={course}>
+    <Link href={`/courses/${course.id}`} passHref>
       {cardContent}
-    </CourseHoverPreview>
+    </Link>
   );
 };
 

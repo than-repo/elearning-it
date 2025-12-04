@@ -1,3 +1,4 @@
+//src\data\categories.ts
 import { cache } from "react";
 import { getCourseCategories } from "@/server/actions/api";
 

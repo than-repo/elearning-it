@@ -68,7 +68,6 @@ fe-elearning
 │  │  │  │  └─ [id]
 │  │  │  │     ├─ loading.tsx
 │  │  │  │     └─ page.tsx
-│  │  │  ├─ Hero
 │  │  │  └─ Test
 │  │  │     └─ page.tsx
 │  │  ├─ favicon.ico
@@ -85,19 +84,36 @@ fe-elearning
 │  │  │  ├─ CourseListSkeleton.tsx
 │  │  │  ├─ CoursesClient.tsx
 │  │  │  └─ CoursesServer.tsx
+│  │  ├─ FeatureCourses
+│  │  │  ├─ FeaturedCoursesClient.tsx
+│  │  │  ├─ FeaturedCoursesServer.tsx
+│  │  │  └─ FeaturedCoursesSkeleton.tsx
+│  │  ├─ Filter
+│  │  │  ├─ CategoryFilter.tsx
+│  │  │  ├─ FilterControls.tsx
+│  │  │  ├─ index.tsx
+│  │  │  ├─ SearchInput.tsx
+│  │  │  ├─ SortSelect.tsx
+│  │  │  └─ useFilter.ts
 │  │  ├─ Footer
-│  │  │  └─ page.tsx
+│  │  │  ├─ Footer.tsx
+│  │  │  ├─ FooterSkeleton.tsx
+│  │  │  └─ index.tsx
 │  │  ├─ Hero
 │  │  │  ├─ GraduationCap3D.tsx
 │  │  │  ├─ Hero.tsx
 │  │  │  └─ MagneticButton.tsx
-│  │  └─ Navbar
-│  │     ├─ DesktopCategories.tsx
-│  │     ├─ MobileDrawer.tsx
-│  │     ├─ NavbarClient.tsx
-│  │     ├─ NavbarServer.tsx
-│  │     ├─ NavRightActions.tsx
-│  │     └─ SearchBar.tsx
+│  │  ├─ Navbar
+│  │  │  ├─ DesktopCategories.tsx
+│  │  │  ├─ MobileDrawer.tsx
+│  │  │  ├─ NavbarClient.tsx
+│  │  │  ├─ NavbarServer.tsx
+│  │  │  ├─ NavRightActions.tsx
+│  │  │  └─ SearchBar.tsx
+│  │  ├─ Pagination
+│  │  │  └─ index.tsx
+│  │  └─ ui
+│  │     └─ Button.tsx
 │  ├─ data
 │  │  ├─ categories.ts
 │  │  └─ courses.ts
@@ -106,7 +122,8 @@ fe-elearning
 │  │  └─ cn.ts
 │  ├─ server
 │  │  └─ actions
-│  │     └─ api.ts
+│  │     ├─ api.ts
+│  │     └─ courseActions.ts
 │  └─ types
 │     ├─ category.ts
 │     ├─ course.ts

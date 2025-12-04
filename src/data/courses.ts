@@ -4,7 +4,6 @@ import { getAllCourses, getCourseDetail } from "@/server/actions/api";
 import { RawCourse, Course } from "@/types/course";
 
 // Map từ RawCourse → Course (chỉ dùng maKhoaHoc làm slug)
-// src/data/courses.ts
 export const mapRawToCourse = (raw: RawCourse): Course => {
   // ← FIX CHÍNH TẠI ĐÂY: Nếu maKhoaHoc rỗng → dùng biDanh hoặc fallback
   const safeId =
@@ -59,5 +58,16 @@ export const getCourseById = cache(
       // Nếu API detail lỗi → vẫn trả về từ danh sách (vẫn tốt hơn 404)
       return mapRawToCourse(found);
     }
+  }
+);
+
+//Lấy 4 khóa học nổi bật (nhiều lượt xem nhất)
+export const getFeaturedCourses = cache(
+  async (limit = 4): Promise<Course[]> => {
+    const allCourses = await getCourses();
+
+    return allCourses
+      .sort((a, b) => b.views - a.views) // sắp xếp giảm dần theo lượt xem
+      .slice(0, limit); // lấy đúng limit bản ghi
   }
 );

@@ -44,7 +44,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="bg-gradient-to-r from-cyan-100 to-blue-500 bg-clip-text text-transparent"
+              className="bg-linear-to-r from-cyan-100 to-blue-500 bg-clip-text text-transparent"
             >
               Anywhere.
             </motion.span>
@@ -71,7 +71,7 @@ export default function Hero() {
           >
             <MagneticButton>
               <a
-                href="#"
+                href="/courses"
                 className="rounded-full bg-white px-10 py-4 text-black font-medium hover:scale-105 transition-all block text-center"
               >
                 Get Started
@@ -80,7 +80,7 @@ export default function Hero() {
 
             <MagneticButton strength={30}>
               <a
-                href="#"
+                href="/courses"
                 className="rounded-full border border-white/30 px-10 py-4 text-white backdrop-blur-sm hover:border-white/60 transition-all block text-center"
               >
                 View Courses

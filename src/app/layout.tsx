@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavbarServer from "@/components/Navbar/NavbarServer";
+import { Suspense } from "react";
+import { Footer } from "@/components/Footer";
+import { FooterSkeleton } from "@/components/Footer/FooterSkeleton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +36,9 @@ export default function RootLayout({
           <NavbarServer />
         </div>
         {children}
+        <Suspense fallback={<FooterSkeleton />}>
+          <Footer />
+        </Suspense>
       </body>
     </html>
   );
