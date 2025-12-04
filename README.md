@@ -75,8 +75,6 @@ fe-elearning
 │  │  │     └─ page.tsx
 │  │  ├─ api
 │  │  │  └─ categories
-│  │  │     └─ [slug]
-│  │  │        └─ route.ts
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css
 │  │  ├─ layout.tsx
