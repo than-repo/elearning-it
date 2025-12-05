@@ -43,8 +43,11 @@ fe-elearning
 ├─ package.json
 ├─ postcss.config.mjs
 ├─ public
+│  ├─ apple.svg
+│  ├─ facebook.svg
 │  ├─ file.svg
 │  ├─ globe.svg
+│  ├─ google.svg
 │  ├─ img
 │  │  └─ fallback-course.png
 │  ├─ models
@@ -57,12 +60,15 @@ fe-elearning
 ├─ README.md
 ├─ src
 │  ├─ app
+│  │  ├─ (auth)
+│  │  │  ├─ layout.tsx
+│  │  │  ├─ login
+│  │  │  │  └─ page.tsx
+│  │  │  └─ register
+│  │  │     └─ page.tsx
 │  │  ├─ (page)
 │  │  │  ├─ About
 │  │  │  │  └─ page.tsx
-│  │  │  ├─ categories
-│  │  │  │  └─ [slug]
-│  │  │  │     └─ page.tsx
 │  │  │  ├─ courses
 │  │  │  │  ├─ components
 │  │  │  │  ├─ error.tsx
@@ -73,13 +79,20 @@ fe-elearning
 │  │  │  │     └─ page.tsx
 │  │  │  └─ Test
 │  │  │     └─ page.tsx
-│  │  ├─ api
-│  │  │  └─ categories
+│  │  ├─ (seo)
+│  │  │  ├─ categories
+│  │  │  │  └─ [slug]
+│  │  │  │     └─ page.tsx
+│  │  │  └─ CategorySeoPage
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css
 │  │  ├─ layout.tsx
 │  │  └─ page.tsx
 │  ├─ components
+│  │  ├─ auth
+│  │  │  ├─ AuthForm.tsx
+│  │  │  ├─ LoginForm.tsx
+│  │  │  └─ RegisterForm.tsx
 │  │  ├─ Card
 │  │  │  └─ index.tsx
 │  │  ├─ Course
@@ -117,19 +130,28 @@ fe-elearning
 │  │  │  └─ SearchBar.tsx
 │  │  ├─ Pagination
 │  │  │  └─ index.tsx
+│  │  ├─ seo
 │  │  └─ ui
-│  │     └─ Button.tsx
+│  │     ├─ button.tsx
+│  │     ├─ card.tsx
+│  │     ├─ input.tsx
+│  │     ├─ label.tsx
+│  │     └─ tabs.tsx
 │  ├─ data
+│  │  ├─ auth.ts
 │  │  ├─ categories.ts
 │  │  └─ courses.ts
 │  ├─ lib
 │  │  ├─ api.ts
-│  │  └─ cn.ts
+│  │  ├─ cn.ts
+│  │  └─ validation
+│  │     └─ authSchema.ts
 │  ├─ server
 │  │  └─ actions
 │  │     ├─ api.ts
-│  │     └─ courseActions.ts
+│  │     └─ authActions.ts
 │  └─ types
+│     ├─ auth.ts
 │     ├─ category.ts
 │     ├─ course.ts
 │     └─ global.d.ts

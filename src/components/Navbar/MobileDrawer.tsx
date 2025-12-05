@@ -94,13 +94,21 @@ export default function MobileDrawer({
         </nav>
 
         {/* Auth Buttons */}
-        <div className="space-y-3 pt-4 border-t">
-          <button className="w-full py-4 text-lg font-bold border-2 border-black rounded-xl hover:bg-gray-50 transition">
+
+        <div className="flex items-center gap-3">
+          <Link
+            href="/login"
+            className="px-4 py-2 text-sm font-bold border border-black hover:bg-gray-100 rounded-lg"
+          >
             Log in
-          </button>
-          <button className="w-full py-4 text-lg font-bold text-white bg-black rounded-xl hover:bg-gray-900 transition">
+          </Link>
+
+          <Link
+            href="/register"
+            className="px-4 py-2 text-sm font-bold text-white bg-purple-700 hover:bg-purple-800 rounded-lg shadow-md"
+          >
             Sign up
-          </button>
+          </Link>
         </div>
 
         {/* Language */}
