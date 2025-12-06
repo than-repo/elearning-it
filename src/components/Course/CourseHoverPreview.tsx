@@ -36,7 +36,7 @@ export default function CourseHoverPreview({
       const rect = cardRef.current.getBoundingClientRect();
       const spaceRight = window.innerWidth - rect.right;
 
-      // Nếu bên phải không đủ ~400px → hiện bên trái
+      // Nếu bên phải không đủ ~400px hiện bên trái
       setPosition(spaceRight < 400 ? "left" : "right");
       setIsOpen(true);
     }, 180); // delay nhẹ
