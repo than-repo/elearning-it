@@ -7,7 +7,7 @@ import {
 } from "@/server/actions/authActions";
 import { SubmitButton } from "./SubmitButton";
 
-/* ==================== ĐĂNG NHẬP ==================== */
+/*  ĐĂNG NHẬP  */
 export function LoginForm() {
   return (
     <form action={loginAction} className="space-y-5">
@@ -31,7 +31,7 @@ export function LoginForm() {
   );
 }
 
-/* ==================== ĐĂNG KÝ ==================== */
+/*  ĐĂNG KÝ  */
 export function RegisterForm() {
   return (
     <form action={registerAction} className="space-y-5">

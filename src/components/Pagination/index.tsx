@@ -15,14 +15,14 @@ export default function Pagination({
   totalPages,
   onPageChange,
 }: Props) {
-  // Tạo ref hoặc dùng ID để scroll tới (ở đây mình scroll tới đầu danh sách khóa học)
+  // Tạo ref hoặc dùng ID để scroll
   const scrollToTop = useCallback(() => {
     // Cách 1: Scroll mượt đến phần danh sách khóa học (tốt nhất)
     const element = document.getElementById("courses-list");
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     } else {
-      // Cách 2: Nếu không có ID → scroll lên đầu trang
+      // Cách 2: Nếu không có ID: scroll lên đầu trang
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, []);

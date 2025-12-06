@@ -10,7 +10,6 @@ import SearchBar from "./SearchBar";
 import NavRightActions from "./NavRightActions";
 import { Category } from "@/types/category";
 
-// THÊM DÒNG NÀY VÀO ĐÂY (type cho user)
 type CurrentUser = {
   taiKhoan: string;
   hoTen: string;
@@ -24,7 +23,7 @@ export default function NavbarClient({
   user,
 }: {
   categories: Category[];
-  user: CurrentUser; // thêm dòng này
+  user: CurrentUser;
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 

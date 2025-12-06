@@ -3,9 +3,8 @@ import { cache } from "react";
 import { getAllCourses, getCourseDetail } from "@/server/actions/api";
 import { RawCourse, Course } from "@/types/course";
 
-// Map từ RawCourse → Course (chỉ dùng maKhoaHoc làm slug)
+// Map từ RawCourse thì Course (chỉ dùng maKhoaHoc làm slug)
 export const mapRawToCourse = (raw: RawCourse): Course => {
-  // ← FIX CHÍNH TẠI ĐÂY: Nếu maKhoaHoc rỗng → dùng biDanh hoặc fallback
   const safeId =
     raw.maKhoaHoc.trim() ||
     raw.biDanh?.trim() ||
@@ -13,7 +12,7 @@ export const mapRawToCourse = (raw: RawCourse): Course => {
 
   return {
     id: safeId,
-    slug: safeId, // ← vẫn dùng làm slug
+    slug: safeId, //  vẫn dùng làm slug
     title: raw.tenKhoaHoc,
     description:
       raw.moTa || "Khóa học chất lượng từ Cybersoft Academy",
@@ -55,7 +54,7 @@ export const getCourseById = cache(
       const detail = await getCourseDetail(id);
       return mapRawToCourse(detail);
     } catch {
-      // Nếu API detail lỗi → vẫn trả về từ danh sách (vẫn tốt hơn 404)
+      // Nếu API detail lỗi thì vẫn trả về từ danh sách (vẫn tốt hơn 404)
       return mapRawToCourse(found);
     }
   }

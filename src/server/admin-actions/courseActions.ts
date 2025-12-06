@@ -10,9 +10,8 @@ import type {
   RawCategoryFromAPI,
 } from "@/types/course";
 
-// -------------------------------------------------------------------
 // Helper: lấy headers chung (access_token + TokenCybersoft)
-// -------------------------------------------------------------------
+
 async function getAuthHeaders() {
   const cookieStore = await cookies();
   const accessToken = cookieStore.get("access_token")?.value;
@@ -34,9 +33,8 @@ async function getAuthHeaders() {
   };
 }
 
-// -------------------------------------------------------------------
 // 1. Lấy danh sách khóa học + phân trang + search + filter danh mục
-// -------------------------------------------------------------------
+
 export async function getCoursesPaginated({
   page = 1,
   pageSize = 10,
@@ -92,9 +90,8 @@ export async function getCoursesPaginated({
   }
 }
 
-// -------------------------------------------------------------------
 // 2. Lấy danh sách danh mục (cho filter dropdown)
-// -------------------------------------------------------------------
+
 export async function getCategories(): Promise<RawCategoryFromAPI[]> {
   const { baseURL, headers } = await getAuthHeaders();
 
@@ -116,9 +113,8 @@ export async function getCategories(): Promise<RawCategoryFromAPI[]> {
   }
 }
 
-// -------------------------------------------------------------------
 // 3. Lấy chi tiết 1 khóa học
-// -------------------------------------------------------------------
+
 export async function getCourseDetail(
   maKhoaHoc: string
 ): Promise<RawCourseFromAPI | null> {
@@ -144,9 +140,8 @@ export async function getCourseDetail(
   }
 }
 
-// -------------------------------------------------------------------
 // 4. Xóa khóa học (API thật: POST + body { "maKhoaHoc": "..." })
-// -------------------------------------------------------------------
+
 export async function deleteCourse(
   maKhoaHoc: string
 ): Promise<boolean> {
@@ -174,9 +169,8 @@ export async function deleteCourse(
   }
 }
 
-// -------------------------------------------------------------------
 // 5. Tạo khóa học + upload ảnh (API chính thức CyberSoft)
-// -------------------------------------------------------------------
+
 export async function createCourseWithImage(
   formData: FormData
 ): Promise<boolean> {
@@ -208,10 +202,7 @@ export async function createCourseWithImage(
   }
 }
 
-// -------------------------------------------------------------------
 // 6. Cập nhật khóa học (API PUT - không có upload ảnh)
-// -------------------------------------------------------------------
-// src/server/admin-actions/courseActions.ts
 
 export async function updateCourse(
   courseData: any

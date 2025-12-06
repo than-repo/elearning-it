@@ -1,5 +1,5 @@
 // src/app/(admin)/admin/loading.ts
-import { Skeleton } from "@/components/admin/ui/Skeleton"; // sửa nếu cần
+import { Skeleton } from "@/components/admin/ui/Skeleton";
 
 export default function AdminLoading() {
   return (

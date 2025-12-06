@@ -7,7 +7,7 @@ export type RawCourse = {
   luotXem: number;
   hinhAnh: string;
   maNhom: string;
-  ngayTao: string; // "18/08/2025" → sẽ parse thành Date nếu cần
+  ngayTao: string; // "18/08/2025"  sẽ parse thành Date nếu cần
   soLuongHocVien: number;
   nguoiTao: {
     taiKhoan: string;
@@ -50,8 +50,8 @@ export type RawCourseFromAPI = {
   biDanh: string;
   tenKhoaHoc: string;
   moTa: string;
-  luotXem: number; // ← ép thành number
-  danhGia: number; // ← ép thành number
+  luotXem: number; //  ép thành number
+  danhGia: number; //  ép thành number
   hinhAnh: string | null;
   ngayTao: string;
   maNhom: string;

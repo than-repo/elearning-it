@@ -119,7 +119,7 @@ export const api = async <T = any>(
     cache,
     next,
     auth = true,
-    server = false, // true -> gọi từ server component/action -> KHÔNG refresh token
+    server = false, // true -: gọi từ server component/action -> KHÔNG refresh token
     timeout = 15000,
   }: {
     method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
@@ -161,7 +161,7 @@ export const api = async <T = any>(
       timeout,
     });
 
-  //  1. Trường hợp server -> không refresh token, chỉ gọi 1 lần
+  //  1. Trường hợp server :> không refresh token, chỉ gọi 1 lần
   if (server) {
     const res = await makeRequest(getAccessToken()); // token thường null, hoặc bạn truyền từ cookie
     if (!res.ok) {
@@ -183,7 +183,7 @@ export const api = async <T = any>(
     }
 
     if (isRefreshing) {
-      // Đang có người khác refresh -> đợi
+      // Đang có người khác refresh : đợi
       const newToken = await new Promise<string | null>((resolve) => {
         subscribeTokenRefresh((token) => resolve(token));
       });
@@ -221,7 +221,7 @@ export const api = async <T = any>(
       } catch {
         clearAuth();
         broadcastRefresh(null);
-        throw new ApiError("UNAUTHENTICATED", 401); // ← để component xử lý redirect
+        throw new ApiError("UNAUTHENTICATED", 401); //  để component xử lý redirect
       } finally {
         isRefreshing = false;
       }

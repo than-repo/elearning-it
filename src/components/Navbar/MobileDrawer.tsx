@@ -14,7 +14,6 @@ import { useState } from "react";
 import { Category } from "@/types/category";
 import { logoutAction } from "@/server/actions/authActions";
 
-// Type cho user (giống hệt ở NavbarClient)
 type CurrentUser = {
   taiKhoan: string;
   hoTen: string;

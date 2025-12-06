@@ -23,7 +23,6 @@ export default async function AdminDashboard() {
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {/* 4 card như cũ – giữ nguyên */}
         <Card className="overflow-hidden">
           <CardHeader className="bg-blue-50 dark:bg-blue-900/20">
             <div className="flex items-center gap-3">

@@ -28,7 +28,7 @@ export default async function AdminCoursesPage({
   const searchQuery = search || "";
   const categoryFilter = category || "";
 
-  // Song song fetch data (Next.js 15+ tối ưu cực tốt)
+  // Song song fetch data
   const [coursesData, categories] = await Promise.all([
     getCoursesPaginated({
       page: currentPage,

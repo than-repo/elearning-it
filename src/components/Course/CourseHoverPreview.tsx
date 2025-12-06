@@ -39,7 +39,7 @@ export default function CourseHoverPreview({
       // Nếu bên phải không đủ ~400px → hiện bên trái
       setPosition(spaceRight < 400 ? "left" : "right");
       setIsOpen(true);
-    }, 180); // delay nhẹ, mượt như Shopee
+    }, 180); // delay nhẹ
   };
 
   const hide = () => {

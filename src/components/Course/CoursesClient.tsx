@@ -22,7 +22,7 @@ export default function CoursesClient({
   serializedCategories,
   defaultCategorySlug,
 }: Props) {
-  // Parse chỉ 1 lần duy nhất → React không tạo lại object mới mỗi render
+  // Parse chỉ 1 lần duy nhất - React không tạo lại object mới mỗi render
   const courses = useMemo<Course[]>(
     () => JSON.parse(serializedCourses),
     [serializedCourses]

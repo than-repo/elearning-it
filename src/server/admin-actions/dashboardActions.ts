@@ -66,7 +66,7 @@ export async function getDashboardStats() {
     };
   } catch (error) {
     console.error("[Admin Dashboard] Lỗi fetch stats:", error);
-    // Trả mock data nếu lỗi → UI không crash (chuẩn production)
+    // Trả mock data nếu lỗi thì UI không crash (chuẩn production)
     return {
       totalCourses: 0,
       totalUsers: 0,

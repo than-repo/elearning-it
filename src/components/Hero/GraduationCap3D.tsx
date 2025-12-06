@@ -16,11 +16,11 @@ function Model() {
   const { scene } = useGLTF("/models/graduation-cap.glb");
 
   return (
-    // 1. Thu nhỏ model 50% → đổi scale từ 2.8 thành 1.4
+    // 1. Thu nhỏ model 50%  đổi scale từ 2.8 thành 1.4
     <primitive
       object={scene}
-      scale={1.4} // ← nhỏ lại 50%
-      position={[0.8, -1.4, 0]} // ← tinh chỉnh lại cho đẹp
+      scale={1.4} //  nhỏ lại 50%
+      position={[0.8, -1.4, 0]} //
     />
   );
 }
@@ -39,7 +39,6 @@ export default function GraduationCap3D() {
   );
 
   return (
-    // ← wrapper chỉ to bằng model + overflow-hidden để tạo hiệu ứng “cắt viền”
     <motion.div
       style={{ scale, opacity }}
       className="pointer-events-none absolute right-[-1%] top-[42%] -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] overflow-hidden"

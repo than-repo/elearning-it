@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 interface SearchInputProps {
   searchTerm: string; // Từ parent (debounced value cho filter)
   debouncedSetSearch: (value: string) => void;
-  onImmediateChange?: (value: string) => void; // Optional: Nếu cần sync real-time elsewhere
+  onImmediateChange?: (value: string) => void;
 }
 
 export default function SearchInput({
@@ -15,7 +15,7 @@ export default function SearchInput({
 }: SearchInputProps) {
   const [localValue, setLocalValue] = useState(searchTerm);
 
-  // Sync local với parent khi parent change (e.g. từ URL)
+  // Sync local với parent khi parent change
   useEffect(() => {
     setLocalValue(searchTerm);
   }, [searchTerm]);

@@ -10,7 +10,6 @@ import { Course } from "@/types/course";
 import { mapRawToCourse } from "./courses";
 
 export const getCategories = cache(async (): Promise<Category[]> => {
-  // console.log("Fetching categories from API...");
   const rawCategories = await getCourseCategories();
 
   return rawCategories.map((cat) => ({

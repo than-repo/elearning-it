@@ -9,9 +9,9 @@ import type {
   UserFormData,
 } from "@/types/user";
 
-// -------------------------------------------------------------------
+//
 // Helper: lấy headers chung (access_token + TokenCybersoft)
-// -------------------------------------------------------------------
+//
 async function getAuthHeaders() {
   const cookieStore = await cookies();
   const accessToken = cookieStore.get("access_token")?.value;
@@ -33,9 +33,9 @@ async function getAuthHeaders() {
   };
 }
 
-// -------------------------------------------------------------------
+//
 // 1. Lấy danh sách người dùng + phân trang + search
-// -------------------------------------------------------------------
+//
 export async function getUsersPaginated({
   page = 1,
   pageSize = 10,
@@ -92,9 +92,9 @@ export async function getUsersPaginated({
   }
 }
 
-// -------------------------------------------------------------------
+//
 // 2. Thêm người dùng mới
-// -------------------------------------------------------------------
+//
 export async function createUser(
   formData: UserFormData
 ): Promise<boolean> {
@@ -128,9 +128,8 @@ export async function createUser(
   }
 }
 
-// -------------------------------------------------------------------
 // 3. Cập nhật thông tin người dùng
-// -------------------------------------------------------------------
+
 export async function updateUser(
   formData: UserFormData
 ): Promise<boolean> {
@@ -169,9 +168,8 @@ export async function updateUser(
   }
 }
 
-// -------------------------------------------------------------------
 // 4. Xóa người dùng
-// -------------------------------------------------------------------
+
 export async function deleteUser(taiKhoan: string): Promise<boolean> {
   const { baseURL, headers } = await getAuthHeaders();
 

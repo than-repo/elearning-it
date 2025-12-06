@@ -26,7 +26,7 @@ export async function getCurrentUser() {
 
     if (!res.ok) {
       const cookieStore = await cookies();
-      cookieStore.delete("access_token"); // ← QUAN TRỌNG: xóa token chết
+      cookieStore.delete("access_token"); //  QUAN TRỌNG: xóa token chết
       return null;
     }
 

@@ -90,7 +90,7 @@ export default function Hero() {
         </div>
 
         {/* CHỈ HIỆN 3D MODEL TỪ LAPTOP TRỞ LÊN (≥1024px) */}
-        {/* Dùng hidden + lg:block → dưới lg sẽ KHÔNG mount component luôn → tiết kiệm 100% tài nguyên */}
+        {/* Dùng hidden + lg:block → dưới lg sẽ KHÔNG mount component luôn , tiết kiệm 100% tài nguyên */}
         <div className="hidden lg:block absolute inset-0 pointer-events-none">
           <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full max-w-xl xl:max-w-2xl 2xl:max-w-3xl">
             <GraduationCap3D />

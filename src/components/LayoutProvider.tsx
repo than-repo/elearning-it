@@ -15,12 +15,12 @@ export function LayoutProvider({
   const pathname = usePathname();
   const isAdmin = pathname?.startsWith("/admin");
 
-  // Nếu là trang admin → chỉ render children (admin tự có layout riêng)
+  // Nếu là trang admin thì chỉ render children (admin tự có layout riêng)
   if (isAdmin) {
     return <>{children}</>;
   }
 
-  // Nếu là trang user thường → render navbar + footer
+  // Nếu là trang user thường thì render navbar + footer
   return (
     <div className="flex min-h-screen flex-col">
       <NavbarServer />

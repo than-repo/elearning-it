@@ -16,9 +16,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>; // ← Promise!
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params; // ← PHẢI AWAIT
+  const { slug } = await params;
   const cats = await getCategories();
   const cat = cats.find((c) => c.slug === slug);
 
@@ -35,13 +35,12 @@ export async function generateMetadata({
   };
 }
 
-// SỬA CHÍNH TẠI ĐÂY
 export default async function CategorySeoPage({
   params,
 }: {
-  params: Promise<{ slug: string }>; // ← Promise!
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params; // ← BẮT BUỘC AWAIT
+  const { slug } = await params;
 
   const categories = await getCategories();
   const category = categories.find((c) => c.slug === slug);

@@ -25,5 +25,5 @@ export interface UserFormData {
   email: string;
   soDT: string; // API nhận soDT (D và T in hoa)
   maLoaiNguoiDung: UserRole;
-  maNhom?: "GP01"; // luôn là GP01 → để optional, code sẽ tự điền
+  maNhom?: "GP01"; // luôn là GP01  để optional, code sẽ tự điền
 }

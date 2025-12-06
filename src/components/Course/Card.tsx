@@ -78,7 +78,6 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
     </article>
   );
 
-  // Giữ Link cho navigation (thay route nếu cần), hoặc <div> nếu static
   return (
     <Link href={`/courses/${course.id}`} passHref>
       {cardContent}
