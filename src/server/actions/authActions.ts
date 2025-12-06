@@ -1,4 +1,3 @@
-// src/server/actions/authActions.ts
 "use server";
 
 import { cookies } from "next/headers";
@@ -7,13 +6,11 @@ import { redirect } from "next/navigation";
 const API_BASE = "https://elearningnew.cybersoft.edu.vn/api";
 const TOKEN = process.env.NEXT_PUBLIC_CYBERSOFT_TOKEN!;
 
-// ĐĂNG NHẬP
 export async function loginAction(formData: FormData) {
   const taiKhoan = formData.get("taiKhoan") as string;
   const matKhau = formData.get("matKhau") as string;
 
-  let redirectTo = "/courses";
-  let errorMessage: string | null = null;
+  let redirectPath = "/courses?success=login";
 
   try {
     const res = await fetch(`${API_BASE}/QuanLyNguoiDung/DangNhap`, {
@@ -28,34 +25,28 @@ export async function loginAction(formData: FormData) {
     const data = await res.json();
 
     if (!res.ok) {
-      errorMessage =
+      throw new Error(
         data.message ||
-        data.content ||
-        "Tài khoản hoặc mật khẩu không đúng";
-    } else {
-      // Thành công → lưu cookie
-      const cookieStore = await cookies();
-      cookieStore.set("access_token", data.accessToken, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        path: "/",
-        maxAge: 30 * 24 * 60 * 60, // 30 ngày
-      });
+          data.content ||
+          "Tài khoản hoặc mật khẩu không đúng"
+      );
     }
-  } catch (err) {
-    errorMessage = "Có lỗi mạng, vui lòng thử lại";
+
+    const cookieStore = await cookies();
+    cookieStore.set("access_token", data.accessToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: 30 * 24 * 60 * 60,
+    });
+  } catch (err: any) {
+    redirectPath = `/login?error=${encodeURIComponent(err.message)}`;
   }
 
-  // QUAN TRỌNG: redirect() PHẢI nằm NGOÀI try/catch hoàn toàn
-  if (errorMessage) {
-    redirect(`/login?error=${encodeURIComponent(errorMessage)}`);
-  }
-
-  redirect(redirectTo);
+  redirect(redirectPath);
 }
 
-// ĐĂNG KÝ
 export async function registerAction(formData: FormData) {
   const payload = {
     taiKhoan: formData.get("taiKhoan") as string,
@@ -64,10 +55,10 @@ export async function registerAction(formData: FormData) {
     hoTen: (formData.get("hoTen") as string) || "",
     soDT: (formData.get("soDT") as string) || "",
     maNhom: "GP01",
-    maLoaiNguoiDung: "HV", // sửa đúng tên field
+    maLoaiNguoiDung: "HV",
   };
 
-  let errorMessage: string | null = null;
+  let redirectPath = "/login?success=register";
 
   try {
     const res = await fetch(`${API_BASE}/QuanLyNguoiDung/DangKy`, {
@@ -82,26 +73,54 @@ export async function registerAction(formData: FormData) {
     const data = await res.json();
 
     if (!res.ok) {
-      errorMessage =
-        data.message || data.content || "Đăng ký thất bại";
-    } else {
-      // Đăng ký thành công → tự động login
-      const cookieStore = await cookies();
-      cookieStore.set("access_token", data.accessToken, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
-        path: "/",
-        maxAge: 30 * 24 * 60 * 60,
-      });
+      throw new Error(
+        data.message || data.content || "Đăng ký thất bại"
+      );
     }
-  } catch (err) {
-    errorMessage = "Có lỗi mạng khi đăng ký";
+  } catch (err: any) {
+    redirectPath = `/register?error=${encodeURIComponent(
+      err.message
+    )}`;
   }
 
-  if (errorMessage) {
-    redirect(`/register?error=${encodeURIComponent(errorMessage)}`);
-  }
+  redirect(redirectPath);
+}
 
-  redirect("/courses");
+export async function logoutAction() {
+  "use server";
+  const cookieStore = await cookies();
+  cookieStore.delete("access_token");
+  redirect("/?success=logout");
+}
+
+// HÀM LẤY USER DUY NHẤT – KHÔNG ĐƯỢC TRÙNG Ở FILE NÀO KHÁC
+export async function getCurrentUser() {
+  "use server";
+  const cookieStore = await cookies();
+  const token = cookieStore.get("access_token")?.value;
+  if (!token) return null;
+
+  try {
+    const res = await fetch(
+      `${API_BASE}/QuanLyNguoiDung/ThongTinNguoiDung`,
+      {
+        method: "POST",
+        headers: {
+          TokenCybersoft: TOKEN,
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    return {
+      taiKhoan: data.taiKhoan,
+      hoTen: data.hoTen || data.taiKhoan,
+      email: data.email,
+      soDT: data.soDT,
+      maLoaiNguoiDung: data.maLoaiNguoiDung,
+    };
+  } catch {
+    return null;
+  }
 }

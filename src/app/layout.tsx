@@ -5,7 +5,9 @@ import NavbarServer from "@/components/Navbar/NavbarServer";
 import { Suspense } from "react";
 import { Footer } from "@/components/Footer";
 import { FooterSkeleton } from "@/components/Footer/FooterSkeleton";
-
+import { SuccessToast } from "@/components/ui/SuccessToast";
+import { Toaster } from "sonner";
+import { DropdownMenu } from "@/components/ui/dropdown-menu";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -39,6 +41,8 @@ export default function RootLayout({
         <Suspense fallback={<FooterSkeleton />}>
           <Footer />
         </Suspense>
+        <SuccessToast />
+        <Toaster position="top-center" richColors closeButton />
       </body>
     </html>
   );

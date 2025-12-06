@@ -1,15 +1,34 @@
 // src/components/Navbar/MobileDrawer.tsx
 "use client";
 
-import { Search, Globe, Menu, ChevronRight } from "lucide-react";
+import {
+  Search,
+  Globe,
+  Menu,
+  ChevronRight,
+  LogOut,
+  User,
+} from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Category } from "@/types/category";
+import { logoutAction } from "@/server/actions/authActions";
+
+// Type cho user (giống hệt ở NavbarClient)
+type CurrentUser = {
+  taiKhoan: string;
+  hoTen: string;
+  email?: string;
+  soDT?: string;
+  maLoaiNguoiDung: string;
+} | null;
 
 export default function MobileDrawer({
   categories,
+  user,
 }: {
   categories: Category[];
+  user: CurrentUser;
 }) {
   const [categoriesOpen, setCategoriesOpen] = useState(false);
 
@@ -47,7 +66,7 @@ export default function MobileDrawer({
           />
         </div>
 
-        {/* Categories - Đã dùng props categories thay vì hardcode */}
+        {/* Categories */}
         <div>
           <button
             onClick={() => setCategoriesOpen(!categoriesOpen)}
@@ -64,7 +83,6 @@ export default function MobileDrawer({
             />
           </button>
 
-          {/* Dropdown list - dùng dữ liệu thật từ API */}
           {categoriesOpen && (
             <div className="mt-4 space-y-1 border-l-4 border-purple-600">
               {categories.map((cat) => (
@@ -93,22 +111,71 @@ export default function MobileDrawer({
           </Link>
         </nav>
 
-        {/* Auth Buttons */}
+        {/* === PHẦN AUTH CHO MOBILE – ĐẸP NHƯ UDEMY === */}
+        <div className="space-y-4 pt-4 border-t">
+          {user ? (
+            <>
+              {/* Hiển thị tên user */}
+              <div className="flex items-center gap-4 py-3">
+                <div className="w-12 h-12 rounded-full bg-purple-700 flex items-center justify-center text-white font-bold text-lg">
+                  {user.hoTen.charAt(0).toUpperCase()}
+                </div>
+                <div>
+                  <p className="font-semibold text-lg">
+                    {user.hoTen}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    {user.email || user.taiKhoan}
+                  </p>
+                </div>
+              </div>
 
-        <div className="flex items-center gap-3">
-          <Link
-            href="/login"
-            className="px-4 py-2 text-sm font-bold border border-black hover:bg-gray-100 rounded-lg"
-          >
-            Log in
-          </Link>
+              <div className="space-y-3">
+                <Link
+                  href="/my-learning"
+                  className="flex items-center gap-4 py-3 text-lg"
+                >
+                  <User className="w-5 h-5" />
+                  My learning
+                </Link>
 
-          <Link
-            href="/register"
-            className="px-4 py-2 text-sm font-bold text-white bg-purple-700 hover:bg-purple-800 rounded-lg shadow-md"
-          >
-            Sign up
-          </Link>
+                <Link
+                  href="/profile"
+                  className="flex items-center gap-4 py-3 text-lg"
+                >
+                  <User className="w-5 h-5" />
+                  Profile
+                </Link>
+
+                <form action={logoutAction} className="w-full">
+                  <button
+                    type="submit"
+                    className="flex w-full items-center gap-4 py-3 text-lg text-red-600"
+                  >
+                    <LogOut className="w-5 h-5" />
+                    Log out
+                  </button>
+                </form>
+              </div>
+            </>
+          ) : (
+            /* Chưa đăng nhập → hiện 2 nút */
+            <div className="flex flex-col gap-3">
+              <Link
+                href="/login"
+                className="px-6 py-3 text-center text-lg font-bold border border-black hover:bg-gray-100 rounded-lg"
+              >
+                Log in
+              </Link>
+
+              <Link
+                href="/register"
+                className="px-6 py-3 text-center text-lg font-bold text-white bg-purple-700 hover:bg-purple-800 rounded-lg shadow-md"
+              >
+                Sign up
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Language */}

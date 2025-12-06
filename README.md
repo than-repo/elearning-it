@@ -37,6 +37,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ```
 fe-elearning
+├─ components.json
 ├─ eslint.config.mjs
 ├─ next.config.ts
 ├─ package-lock.json
@@ -91,8 +92,7 @@ fe-elearning
 │  ├─ components
 │  │  ├─ auth
 │  │  │  ├─ AuthForm.tsx
-│  │  │  ├─ LoginForm.tsx
-│  │  │  └─ RegisterForm.tsx
+│  │  │  └─ SubmitButton.tsx
 │  │  ├─ Card
 │  │  │  └─ index.tsx
 │  │  ├─ Course
@@ -133,10 +133,9 @@ fe-elearning
 │  │  ├─ seo
 │  │  └─ ui
 │  │     ├─ button.tsx
-│  │     ├─ card.tsx
-│  │     ├─ input.tsx
-│  │     ├─ label.tsx
-│  │     └─ tabs.tsx
+│  │     ├─ dropdown-menu.tsx
+│  │     ├─ sonner.tsx
+│  │     └─ SuccessToast.tsx
 │  ├─ data
 │  │  ├─ auth.ts
 │  │  ├─ categories.ts
@@ -144,12 +143,16 @@ fe-elearning
 │  ├─ lib
 │  │  ├─ api.ts
 │  │  ├─ cn.ts
+│  │  ├─ utils.ts
 │  │  └─ validation
 │  │     └─ authSchema.ts
 │  ├─ server
-│  │  └─ actions
-│  │     ├─ api.ts
-│  │     └─ authActions.ts
+│  │  ├─ actions
+│  │  │  ├─ api.ts
+│  │  │  └─ authActions.ts
+│  │  └─ auth
+│  │     ├─ get-user.ts
+│  │     └─ jwt.ts
 │  └─ types
 │     ├─ auth.ts
 │     ├─ category.ts

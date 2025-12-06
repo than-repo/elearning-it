@@ -1,3 +1,4 @@
+//src\app\(auth)\login\page.tsx
 import { LoginForm } from "@/components/auth/AuthForm";
 import Link from "next/link";
 import Image from "next/image";
@@ -5,9 +6,9 @@ import Image from "next/image";
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string }>; // ← Promise ở đây
+  searchParams: Promise<{ error?: string; success?: string }>;
 }) {
-  const { error } = await searchParams; // ← BẮT BUỘC await
+  const { error, success } = await searchParams;
 
   return (
     <div className="min-h-screen flex">

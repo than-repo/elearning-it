@@ -1,3 +1,4 @@
+//src\app\(auth)\register\page.tsx
 import { RegisterForm } from "@/components/auth/AuthForm";
 import Link from "next/link";
 import Image from "next/image";
@@ -5,9 +6,9 @@ import Image from "next/image";
 export default async function RegisterPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string }>;
+  searchParams: Promise<{ error?: string; success?: string }>;
 }) {
-  const { error } = await searchParams; // ← await ở đây
+  const { error, success } = await searchParams;
 
   return (
     <div className="flex h-screen">

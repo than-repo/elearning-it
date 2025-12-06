@@ -10,10 +10,21 @@ import SearchBar from "./SearchBar";
 import NavRightActions from "./NavRightActions";
 import { Category } from "@/types/category";
 
+// THÊM DÒNG NÀY VÀO ĐÂY (type cho user)
+type CurrentUser = {
+  taiKhoan: string;
+  hoTen: string;
+  email?: string;
+  soDT?: string;
+  maLoaiNguoiDung: string;
+} | null;
+
 export default function NavbarClient({
   categories,
+  user,
 }: {
   categories: Category[];
+  user: CurrentUser; // thêm dòng này
 }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -53,7 +64,8 @@ export default function NavbarClient({
             </button>
           </div>
 
-          <NavRightActions />
+          {/* Truyền user xuống */}
+          <NavRightActions user={user} />
 
           <div className="flex items-center gap-2 lg:hidden">
             <button className="relative p-2 hover:bg-gray-100 rounded-lg">
@@ -66,10 +78,10 @@ export default function NavbarClient({
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer – cũng truyền user */}
       {mobileOpen && (
         <div className="lg:hidden border-t bg-white">
-          <MobileDrawer categories={categories} />
+          <MobileDrawer categories={categories} user={user} />
         </div>
       )}
     </header>
