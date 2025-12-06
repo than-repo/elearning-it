@@ -51,7 +51,7 @@ export default function NavRightActions({ user }: { user: User }) {
   return (
     <div className="hidden lg:flex items-center gap-4">
       <Link
-        href="/business"
+        href="/admin"
         className="text-sm font-medium hover:text-purple-700"
       >
         Udemy Business

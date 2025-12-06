@@ -72,7 +72,9 @@ fe-elearning
 │  │  │  │  ├─ layout.tsx
 │  │  │  │  ├─ loading.tsx
 │  │  │  │  ├─ not-found.tsx
-│  │  │  │  └─ page.tsx
+│  │  │  │  ├─ page.tsx
+│  │  │  │  └─ users
+│  │  │  │     └─ page.tsx
 │  │  │  └─ courses
 │  │  ├─ (user)
 │  │  │  ├─ (auth)

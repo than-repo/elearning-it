@@ -1,4 +1,4 @@
-//src\components\admin\layout\AdminHeader.tsx
+// src/components/admin/layout/AdminHeader.tsx
 "use client";
 
 import { Bell, LogOut, Moon, Sun } from "lucide-react";
@@ -12,16 +12,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "next-themes";
-import { useRouter } from "next/navigation";
+
+// Import Server Action
+import { logoutAction } from "@/server/actions/authActions";
 
 export function AdminHeader() {
   const { setTheme, resolvedTheme } = useTheme();
-  const router = useRouter();
-
-  const handleLogout = () => {
-    document.cookie = "access_token=; path=/; max-age=0";
-    router.push("/login");
-  };
 
   return (
     <header className="sticky top-0 z-40 border-b bg-white dark:bg-gray-800">
@@ -47,7 +43,7 @@ export function AdminHeader() {
           <Button
             variant="ghost"
             size="sm"
-            className="h-10 w-10 p-0 relative"
+            className="h-10 w-10 p-0"
             onClick={() =>
               setTheme(resolvedTheme === "dark" ? "light" : "dark")
             }
@@ -65,7 +61,7 @@ export function AdminHeader() {
                 size="sm"
                 className="h-10 w-10 p-0 rounded-full"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-blue-600 to-purple-600 text-white font-bold">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-purple-600 text-white font-bold">
                   GV
                 </div>
               </Button>
@@ -74,12 +70,18 @@ export function AdminHeader() {
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Tài khoản Giáo vụ</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem
-                onClick={handleLogout}
-                className="text-red-600 focus:text-red-600"
-              >
-                <LogOut className="mr-2 h-4 w-4" />
-                Đăng xuất
+
+              {/* ĐĂNG XUẤT – DÙNG FORM ACTION NHƯ USER */}
+              <DropdownMenuItem asChild>
+                <form action={logoutAction}>
+                  <button
+                    type="submit"
+                    className="flex w-full items-center gap-3 text-red-600 hover:text-red-600"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Đăng xuất
+                  </button>
+                </form>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
