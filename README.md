@@ -39,6 +39,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 fe-elearning
 ├─ components.json
 ├─ eslint.config.mjs
+├─ middleware.ts
 ├─ next.config.ts
 ├─ package-lock.json
 ├─ package.json
@@ -61,6 +62,14 @@ fe-elearning
 ├─ README.md
 ├─ src
 │  ├─ app
+│  │  ├─ (admin)
+│  │  │  ├─ admin
+│  │  │  │  ├─ error.tsx
+│  │  │  │  ├─ layout.tsx
+│  │  │  │  ├─ loading.tsx
+│  │  │  │  ├─ not-found.tsx
+│  │  │  │  └─ page.tsx
+│  │  │  └─ courses
 │  │  ├─ (auth)
 │  │  │  ├─ layout.tsx
 │  │  │  ├─ login
@@ -71,7 +80,6 @@ fe-elearning
 │  │  │  ├─ About
 │  │  │  │  └─ page.tsx
 │  │  │  ├─ courses
-│  │  │  │  ├─ components
 │  │  │  │  ├─ error.tsx
 │  │  │  │  ├─ loading.tsx
 │  │  │  │  ├─ page.tsx
@@ -88,8 +96,17 @@ fe-elearning
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css
 │  │  ├─ layout.tsx
-│  │  └─ page.tsx
+│  │  ├─ my-learning
+│  │  │  └─ page.tsx
+│  │  ├─ page.tsx
+│  │  └─ profile
+│  │     ├─ page.tsx
+│  │     └─ ProfileForm.tsx
 │  ├─ components
+│  │  ├─ admin
+│  │  │  └─ layout
+│  │  │     ├─ AdminHeader.tsx
+│  │  │     └─ Sidebar.tsx
 │  │  ├─ auth
 │  │  │  ├─ AuthForm.tsx
 │  │  │  └─ SubmitButton.tsx
@@ -149,7 +166,9 @@ fe-elearning
 │  ├─ server
 │  │  ├─ actions
 │  │  │  ├─ api.ts
-│  │  │  └─ authActions.ts
+│  │  │  ├─ authActions.ts
+│  │  │  └─ updateProfileAction.ts
+│  │  ├─ admin-actions
 │  │  └─ auth
 │  │     ├─ get-user.ts
 │  │     └─ jwt.ts

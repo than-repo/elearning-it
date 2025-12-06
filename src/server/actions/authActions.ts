@@ -1,3 +1,4 @@
+//src\server\actions\authActions.ts
 "use server";
 
 import { cookies } from "next/headers";
@@ -92,7 +93,6 @@ export async function logoutAction() {
   cookieStore.delete("access_token");
   redirect("/?success=logout");
 }
-
 // HÀM LẤY USER DUY NHẤT – KHÔNG ĐƯỢC TRÙNG Ở FILE NÀO KHÁC
 export async function getCurrentUser() {
   "use server";
