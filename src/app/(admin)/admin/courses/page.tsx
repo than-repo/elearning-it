@@ -1,4 +1,5 @@
 // src/app/(admin)/admin/courses/page.tsx
+export const dynamic = "force-dynamic";
 import {
   getCoursesPaginated,
   getCategories,

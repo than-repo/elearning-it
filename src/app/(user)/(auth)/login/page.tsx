@@ -1,4 +1,5 @@
 //src\app\(user)\(auth)\login\page.tsx
+export const dynamic = "force-dynamic";
 import { LoginForm } from "@/components/auth/AuthForm";
 import Link from "next/link";
 import Image from "next/image";

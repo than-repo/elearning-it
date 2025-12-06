@@ -1,4 +1,5 @@
 // src\app\(user)\layout.tsx
+export const dynamic = "force-dynamic";
 import NavbarServer from "@/components/Navbar/NavbarServer";
 import { Footer } from "@/components/Footer";
 import { FooterSkeleton } from "@/components/Footer/FooterSkeleton";

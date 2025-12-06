@@ -1,4 +1,5 @@
 //src\app\(user)\(page)\courses\loading.tsx
+export const dynamic = "force-dynamic";
 import CourseListSkeleton from "@/components/Course/CourseListSkeleton";
 
 export default function Loading() {

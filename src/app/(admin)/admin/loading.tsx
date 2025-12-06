@@ -1,4 +1,5 @@
 // src/app/(admin)/admin/loading.ts
+export const dynamic = "force-dynamic";
 import { Skeleton } from "@/components/admin/ui/Skeleton";
 
 export default function AdminLoading() {

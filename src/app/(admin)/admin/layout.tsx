@@ -2,7 +2,7 @@
 import { AdminSidebar } from "@/components/admin/layout/Sidebar";
 import { AdminHeader } from "@/components/admin/layout/AdminHeader";
 import { Toaster } from "@/components/ui/sonner";
-
+export const dynamic = "force-dynamic";
 export default function AdminLayout({
   children,
 }: {

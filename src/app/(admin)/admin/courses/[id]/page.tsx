@@ -138,7 +138,7 @@ export default async function CourseDetailPage({
                   Người tạo
                 </h3>
                 <div className="flex items-center gap-3">
-                  <div className="h-12 w-12 rounded-full bg-linear-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold">
+                  <div className="h-12 w-12 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold">
                     {course.nguoiTao.hoTen?.[0] || "A"}
                   </div>
                   <div>
@@ -147,7 +147,8 @@ export default async function CourseDetailPage({
                     </p>
                     <p className="text-sm text-gray-500">
                       {course.nguoiTao.taiKhoan || "—"} •{" "}
-                      {course.nguoiTao.tenLoaiNguoiDung || "Giáo vụ"}
+                      {(course.nguoiTao as any).tenLoaiNguoiDung ??
+                        "Giáo vụ"}
                     </p>
                   </div>
                 </div>

@@ -1,4 +1,5 @@
 // src\app\(user)\my-learning\page.tsx
+export const dynamic = "force-dynamic";
 import { getCurrentUser } from "@/server/auth/get-user";
 import { redirect } from "next/navigation";
 
