@@ -4,7 +4,7 @@
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-const API_BASE = "https://elearningnew.cybersoft.edu.vn/api";
+const API_BASE = process.env.BASE_URL;
 const TOKEN = process.env.NEXT_PUBLIC_CYBERSOFT_TOKEN!;
 
 export async function loginAction(formData: FormData) {

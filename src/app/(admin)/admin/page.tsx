@@ -9,9 +9,6 @@ import { Users, BookOpen, UserCheck, TrendingUp } from "lucide-react";
 import { getDashboardStats } from "@/server/admin-actions/dashboardActions";
 
 export default async function AdminDashboard() {
-  // BỎ HẲN phần check role – middleware đã xử lý
-  // nếu vào được đây = chắc chắn là GV
-
   const stats = await getDashboardStats();
 
   return (

@@ -18,7 +18,7 @@ export async function getDashboardStats() {
     throw new Error("Unauthorized: Không tìm thấy access_token");
   }
 
-  const BASE_URL = "https://elearningnew.cybersoft.edu.vn/api";
+  const BASE_URL = process.env.BASE_URL;
   const TOKEN_CYBERSOFT = process.env.NEXT_PUBLIC_CYBERSOFT_TOKEN;
 
   const headers = {

@@ -42,3 +42,41 @@ export type Course = {
     name: string; // Lập trình Backend...
   };
 };
+
+// Raw từ API Cybersoft (phải chấp nhận null)
+// Đảm bảo 2 trường này là number (không phải unknown hay null)
+export type RawCourseFromAPI = {
+  maKhoaHoc: string;
+  biDanh: string;
+  tenKhoaHoc: string;
+  moTa: string;
+  luotXem: number; // ← ép thành number
+  danhGia: number; // ← ép thành number
+  hinhAnh: string | null;
+  ngayTao: string;
+  maNhom: string;
+  soLuongHocVien: number;
+  nguoiTao: {
+    hoTen: string;
+    taiKhoan: string;
+  };
+  danhMucKhoaHoc: {
+    maDanhMucKhoahoc: string;
+    tenDanhMucKhoaHoc: string;
+  };
+};
+
+// Response phân trang từ API LayDanhSachKhoaHoc_PhanTrang
+export type CoursePaginationResponse = {
+  currentPage: number;
+  count: number; // số item trong trang hiện tại
+  totalPages: number;
+  totalCount: number; // tổng số khóa học
+  items: RawCourseFromAPI[];
+};
+
+// Danh mục từ API LayDanhMucKhoaHoc (giống RawCategory nhưng rename cho rõ)
+export type RawCategoryFromAPI = {
+  maDanhMuc: string;
+  tenDanhMuc: string;
+};

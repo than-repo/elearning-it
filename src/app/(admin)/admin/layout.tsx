@@ -1,4 +1,4 @@
-// src/app/(admin)/admin/layout.tsx → HOÀN TOÀN RIÊNG BIỆT
+// src/app/(admin)/admin/layout.tsx
 import { AdminSidebar } from "@/components/admin/layout/Sidebar";
 import { AdminHeader } from "@/components/admin/layout/AdminHeader";
 import { Toaster } from "@/components/ui/sonner";

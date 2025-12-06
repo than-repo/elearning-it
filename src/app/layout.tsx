@@ -1,10 +1,6 @@
-// src/app/layout.tsx → PHIÊN BẢN CUỐI CÙNG, KHÔNG THỂ SAI ĐƯỢC NỮA!
+// src/app/layout.tsx  ← CHỈ GIỮ NHỮNG THỨ CHUNG CHO TOÀN APP
 import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
-import NavbarServer from "@/components/Navbar/NavbarServer";
-import { Suspense } from "react";
-import { Footer } from "@/components/Footer";
-import { FooterSkeleton } from "@/components/Footer/FooterSkeleton";
 import { SuccessToast } from "@/components/ui/SuccessToast";
 import { Toaster } from "sonner";
 
@@ -27,15 +23,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* TRANG USER: có navbar + footer */}
-        <div className="flex min-h-screen flex-col">
-          <NavbarServer />
-          <main className="flex-1">{children}</main>
-          <Suspense fallback={<FooterSkeleton />}>
-            <Footer />
-          </Suspense>
-        </div>
-
+        {children}
         <SuccessToast />
         <Toaster position="top-center" richColors closeButton />
       </body>

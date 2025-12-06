@@ -64,49 +64,57 @@ fe-elearning
 │  ├─ app
 │  │  ├─ (admin)
 │  │  │  ├─ admin
+│  │  │  │  ├─ courses
+│  │  │  │  │  ├─ page.tsx
+│  │  │  │  │  └─ [id]
+│  │  │  │  │     └─ page.tsx
 │  │  │  │  ├─ error.tsx
 │  │  │  │  ├─ layout.tsx
 │  │  │  │  ├─ loading.tsx
 │  │  │  │  ├─ not-found.tsx
 │  │  │  │  └─ page.tsx
 │  │  │  └─ courses
-│  │  ├─ (auth)
-│  │  │  ├─ layout.tsx
-│  │  │  ├─ login
-│  │  │  │  └─ page.tsx
-│  │  │  └─ register
-│  │  │     └─ page.tsx
-│  │  ├─ (page)
-│  │  │  ├─ About
-│  │  │  │  └─ page.tsx
-│  │  │  ├─ courses
-│  │  │  │  ├─ error.tsx
-│  │  │  │  ├─ loading.tsx
-│  │  │  │  ├─ page.tsx
-│  │  │  │  └─ [id]
+│  │  ├─ (user)
+│  │  │  ├─ (auth)
+│  │  │  │  ├─ layout.tsx
+│  │  │  │  ├─ login
+│  │  │  │  │  └─ page.tsx
+│  │  │  │  └─ register
+│  │  │  │     └─ page.tsx
+│  │  │  ├─ (page)
+│  │  │  │  ├─ About
+│  │  │  │  │  └─ page.tsx
+│  │  │  │  └─ courses
+│  │  │  │     ├─ error.tsx
 │  │  │  │     ├─ loading.tsx
-│  │  │  │     └─ page.tsx
-│  │  │  └─ Test
-│  │  │     └─ page.tsx
-│  │  ├─ (seo)
-│  │  │  ├─ categories
-│  │  │  │  └─ [slug]
-│  │  │  │     └─ page.tsx
-│  │  │  └─ CategorySeoPage
+│  │  │  │     ├─ page.tsx
+│  │  │  │     └─ [id]
+│  │  │  │        ├─ loading.tsx
+│  │  │  │        └─ page.tsx
+│  │  │  ├─ (seo)
+│  │  │  │  └─ categories
+│  │  │  │     └─ [slug]
+│  │  │  │        └─ page.tsx
+│  │  │  ├─ layout.tsx
+│  │  │  ├─ my-learning
+│  │  │  │  └─ page.tsx
+│  │  │  ├─ page.tsx
+│  │  │  └─ profile
+│  │  │     ├─ page.tsx
+│  │  │     └─ ProfileForm.tsx
 │  │  ├─ favicon.ico
 │  │  ├─ globals.css
-│  │  ├─ layout.tsx
-│  │  ├─ my-learning
-│  │  │  └─ page.tsx
-│  │  ├─ page.tsx
-│  │  └─ profile
-│  │     ├─ page.tsx
-│  │     └─ ProfileForm.tsx
+│  │  └─ layout.tsx
 │  ├─ components
 │  │  ├─ admin
-│  │  │  └─ layout
-│  │  │     ├─ AdminHeader.tsx
-│  │  │     └─ Sidebar.tsx
+│  │  │  ├─ courses
+│  │  │  │  ├─ CourseDialog.tsx
+│  │  │  │  └─ DataTable.tsx
+│  │  │  ├─ layout
+│  │  │  │  ├─ AdminHeader.tsx
+│  │  │  │  └─ Sidebar.tsx
+│  │  │  └─ ui
+│  │  │     └─ Skeleton.tsx
 │  │  ├─ auth
 │  │  │  ├─ AuthForm.tsx
 │  │  │  └─ SubmitButton.tsx
@@ -138,6 +146,7 @@ fe-elearning
 │  │  │  ├─ GraduationCap3D.tsx
 │  │  │  ├─ Hero.tsx
 │  │  │  └─ MagneticButton.tsx
+│  │  ├─ LayoutProvider.tsx
 │  │  ├─ Navbar
 │  │  │  ├─ DesktopCategories.tsx
 │  │  │  ├─ MobileDrawer.tsx
@@ -149,10 +158,19 @@ fe-elearning
 │  │  │  └─ index.tsx
 │  │  ├─ seo
 │  │  └─ ui
+│  │     ├─ badge.tsx
 │  │     ├─ button.tsx
+│  │     ├─ card.tsx
+│  │     ├─ dialog.tsx
 │  │     ├─ dropdown-menu.tsx
+│  │     ├─ input.tsx
+│  │     ├─ label.tsx
+│  │     ├─ select.tsx
+│  │     ├─ skeleton.tsx
 │  │     ├─ sonner.tsx
-│  │     └─ SuccessToast.tsx
+│  │     ├─ SuccessToast.tsx
+│  │     ├─ table.tsx
+│  │     └─ textarea.tsx
 │  ├─ data
 │  │  ├─ auth.ts
 │  │  ├─ categories.ts
@@ -160,6 +178,7 @@ fe-elearning
 │  ├─ lib
 │  │  ├─ api.ts
 │  │  ├─ cn.ts
+│  │  ├─ useDebounce.ts
 │  │  ├─ utils.ts
 │  │  └─ validation
 │  │     └─ authSchema.ts
@@ -169,11 +188,12 @@ fe-elearning
 │  │  │  ├─ authActions.ts
 │  │  │  └─ updateProfileAction.ts
 │  │  ├─ admin-actions
+│  │  │  ├─ courseActions.ts
+│  │  │  └─ dashboardActions.ts
 │  │  └─ auth
 │  │     ├─ get-user.ts
 │  │     └─ jwt.ts
 │  └─ types
-│     ├─ auth.ts
 │     ├─ category.ts
 │     ├─ course.ts
 │     └─ global.d.ts
