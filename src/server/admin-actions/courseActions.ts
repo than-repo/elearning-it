@@ -130,7 +130,7 @@ export async function getCourseDetail(
       console.warn(
         `[getCourseDetail] Không tìm thấy khóa học với maKhoaHoc = ${maKhoaHoc}`
       );
-      return null; // Trả null thay vì throw → không crash server
+      return null; // Trả null thay vì throw - không crash server
     }
 
     return (await res.json()) as RawCourseFromAPI;
@@ -183,7 +183,7 @@ export async function createCourseWithImage(
         method: "POST",
         headers: {
           TokenCybersoft: headers.TokenCybersoft,
-          // Không set Content-Type → browser tự set multipart/form-data
+          // Không set Content-Type - browser tự set multipart/form-data
         },
         body: formData,
       }

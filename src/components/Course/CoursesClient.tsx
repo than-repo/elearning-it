@@ -48,7 +48,7 @@ export default function CoursesClient({
     setPage,
   } = useFilter(courses, categories);
 
-  // Nếu là trang SEO → tự động chọn danh mục (không hiện filter cũng được, nhưng vẫn hoạt động)
+  // Nếu là trang SEO tự động chọn danh mục (không hiện filter cũng được, nhưng vẫn hoạt động)
   React.useEffect(() => {
     if (defaultCategorySlug && category === "") {
       setCategory(defaultCategorySlug);

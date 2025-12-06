@@ -16,7 +16,7 @@ export default async function CoursesServer({
     getCategories(),
   ]);
 
-  // Đây là dòng duy nhất cần sửa – tìm category có slug khớp → lấy id → so sánh với course.category.id
+  // Đây là dòng duy nhất cần sửa – tìm category có slug khớp - lấy id - so sánh với course.category.id
   const filteredCourses = initialCategorySlug
     ? courses.filter((course) => {
         const matched = categories.find(

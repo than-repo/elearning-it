@@ -1,6 +1,6 @@
 // src/server/auth/jwt.ts
-// CyberSoft dùng RS256 + public key → không thể verify bằng secret
-// → Chỉ cần decode base64 là đủ lấy thông tin user
+// CyberSoft dùng RS256 + public key  không thể verify bằng secret
+//  Chỉ cần decode base64 là đủ lấy thông tin user
 
 export function decodeToken(token: string) {
   try {

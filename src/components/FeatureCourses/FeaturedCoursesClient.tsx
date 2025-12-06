@@ -25,7 +25,7 @@ export function FeaturedCoursesClient({
             href="/courses"
             className="inline-flex h-11 items-center justify-center rounded-md border border-input bg-background px-6 text-lg font-medium transition-all hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
-            Xem tất cả →
+            Xem tất cả→
           </Link>
         </div>
 

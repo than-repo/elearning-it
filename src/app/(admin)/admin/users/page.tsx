@@ -1,6 +1,6 @@
 // src/app/(admin)/admin/users/page.tsx
 "use client";
-export const dynamic = "force-dynamic"; // ← thêm dòng này
+export const dynamic = "force-dynamic"; //  thêm dòng này
 import { useEffect, useState, useTransition } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import UsersDataTable from "@/components/admin/users/UsersDataTable";

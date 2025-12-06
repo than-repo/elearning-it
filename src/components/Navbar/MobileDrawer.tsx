@@ -158,7 +158,7 @@ export default function MobileDrawer({
               </div>
             </>
           ) : (
-            /* Chưa đăng nhập → hiện 2 nút */
+            /* Chưa đăng nhập hiện 2 nút */
             <div className="flex flex-col gap-3">
               <Link
                 href="/login"
