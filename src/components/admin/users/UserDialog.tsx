@@ -88,10 +88,6 @@ export default function UserDialog({
       return toast.error("Vui lòng nhập họ tên");
     if (!formData.email.trim())
       return toast.error("Vui lòng nhập email");
-    if (!/^0\d{9}$/.test(formData.soDT))
-      return toast.error(
-        "Số điện thoại phải là 10 số, bắt đầu bằng 0"
-      );
 
     startTransition(async () => {
       try {

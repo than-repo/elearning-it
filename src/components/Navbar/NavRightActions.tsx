@@ -54,7 +54,7 @@ export default function NavRightActions({ user }: { user: User }) {
         href="/admin"
         className="text-sm font-medium hover:text-purple-700"
       >
-        Udemy Business
+        Admin
       </Link>
       <Link
         href="/teach"
