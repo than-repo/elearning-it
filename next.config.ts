@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "elearningnew.cybersoft.edu.vn",
         port: "",
-        pathname: "/hinhanh/**", // ← Bao hết: .jpg, .png, .jpeg, _gp01, v.v.
+        pathname: "/hinhanh/**", //  Bao hết: .jpg, .png, .jpeg, _gp01, v.v.
       },
       // Dự phòng: nếu có ảnh nằm ngoài /hinhanh/
       {

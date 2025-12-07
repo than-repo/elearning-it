@@ -1,4 +1,4 @@
-// src/components/ui/Button.tsx   ← tạo luôn folder ui nếu chưa có
+// src/components/ui/Button.tsx
 import { cn } from "@/lib/cn";
 import { ButtonHTMLAttributes, forwardRef } from "react";
 

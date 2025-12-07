@@ -1,4 +1,4 @@
-// src/app/layout.tsx  ← CHỈ GIỮ NHỮNG THỨ CHUNG CHO TOÀN APP
+// src/app/layout.tsx   CHỈ GIỮ NHỮNG THỨ CHUNG CHO TOÀN APP
 import "./globals.css";
 import { Geist, Geist_Mono } from "next/font/google";
 import { SuccessToast } from "@/components/ui/SuccessToast";
